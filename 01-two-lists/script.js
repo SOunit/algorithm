@@ -32,7 +32,7 @@ function getEditedProduct(product) {
         productOption.edited = true;
       },
       () => {
-        product.productOptions.push();
+        product.productOptions.push(getNewProductOption());
       }
     );
 
@@ -41,16 +41,12 @@ function getEditedProduct(product) {
         () => {
           optionItem.edited = true;
         },
-        () => {}
+        () => {
+          productOption.optionItems.push(getNewOptionItem());
+        }
       );
     });
   });
-
-  product.productOptions.push(getNewProductOption());
-  product.productOptions.push(getNewProductOption());
-  product.productOptions.push(getNewProductOption());
-  product.productOptions.push(getNewProductOption());
-  product.productOptions.push(getNewProductOption());
 
   return product;
 }
@@ -59,14 +55,16 @@ function CreateUpdate(product) {
   const dbProduct = getDbProduct(product);
   const editedProduct = getEditedProduct(product);
 
+  old(dbProduct, editedProduct);
+
   // edit
   console.log({ product, dbProduct, editedProduct });
+}
 
+function old(dbProduct, editedProduct) {
   // CreateUpdate productOptions
   editedProduct.productOptions.forEach((editedProductOption) => {
-    const match = dbProduct.productOptions.find(
-      (dbProductOption) => dbProductOption.id === editedProductOption.id
-    );
+    const match = getDbProductOption(dbProduct, editedProductOption);
 
     if (match) {
       match.updated = true;
@@ -78,6 +76,69 @@ function CreateUpdate(product) {
   save(dbProduct.productOptions);
 
   console.log({ dbProduct });
+
+  // CreateUpdate optionItems
+  editedProduct.productOptions.forEach((editedProductOption) => {
+    editedProductOption.optionItems.forEach((editedOptionItem) => {
+      const dbProductOption = getDbProductOption(
+        dbProduct,
+        editedProductOption
+      );
+      const dbOptionItem = getDbOptionItem(dbProductOption, editedOptionItem);
+
+      if (dbOptionItem) {
+        dbOptionItem.updated = true;
+      } else {
+        dbProductOption.optionItems.push(editedOptionItem);
+      }
+    });
+  });
+  // save();
+
+  // CreateUpdate optionItems
+  editedProduct.productOptions.forEach((editedProductOption) => {
+    editedProductOption.optionItems.forEach((editedOptionItem) => {
+      editedOptionItem.subOptions.forEach((editedSubOption) => {
+        const dbProductOption = getDbProductOption(
+          dbProduct,
+          editedProductOption
+        );
+        const dbOptionItem = getDbOptionItem(dbProductOption, editedOptionItem);
+        const dbSubOption = getDbSubOption(dbOptionItem, editedSubOption);
+
+        if (dbSubOption) {
+          dbSubOption.updated = true;
+        } else {
+          editedSubOption.new = true;
+          dbOptionItem.subOptions.push(editedSubOption);
+        }
+      });
+    });
+  });
+}
+
+function getDbProductOption(dbProduct, editedProductOption) {
+  const match = dbProduct.productOptions.find(
+    (dbProductOption) => dbProductOption.id === editedProductOption.id
+  );
+
+  return match;
+}
+
+function getDbOptionItem(dbProductOption, editedOptionItem) {
+  const match = dbProductOption.optionItems.find(
+    (dbProductOption) => dbProductOption.id === editedOptionItem.id
+  );
+
+  return match;
+}
+
+function getDbSubOption(dbOptionItem, editedSubOption) {
+  const match = dbOptionItem.subOptions.find(
+    (dbSubOption) => dbSubOption.id === editedSubOption.id
+  );
+
+  return match;
 }
 
 function save(items) {
@@ -86,98 +147,42 @@ function save(items) {
   });
 }
 
-function getNewProductOption() {
+function getNewOptionItem() {
   return {
     id: Math.random(),
-    optionItems: [
+    subOptions: [
       {
         id: Math.random(),
-        subOptions: [
-          {
-            id: Math.random(),
-            subOptionItems: [
-              { id: Math.random() },
-              { id: Math.random() },
-              { id: Math.random() },
-            ],
-          },
-          {
-            id: Math.random(),
-            subOptionItems: [
-              { id: Math.random() },
-              { id: Math.random() },
-              { id: Math.random() },
-            ],
-          },
-          {
-            id: Math.random(),
-            subOptionItems: [
-              { id: Math.random() },
-              { id: Math.random() },
-              { id: Math.random() },
-            ],
-          },
+        subOptionItems: [
+          { id: Math.random() },
+          { id: Math.random() },
+          { id: Math.random() },
         ],
       },
       {
         id: Math.random(),
-        subOptions: [
-          {
-            id: Math.random(),
-            subOptionItems: [
-              { id: Math.random() },
-              { id: Math.random() },
-              { id: Math.random() },
-            ],
-          },
-          {
-            id: Math.random(),
-            subOptionItems: [
-              { id: Math.random() },
-              { id: Math.random() },
-              { id: Math.random() },
-            ],
-          },
-          {
-            id: Math.random(),
-            subOptionItems: [
-              { id: Math.random() },
-              { id: Math.random() },
-              { id: Math.random() },
-            ],
-          },
+        subOptionItems: [
+          { id: Math.random() },
+          { id: Math.random() },
+          { id: Math.random() },
         ],
       },
       {
         id: Math.random(),
-        subOptions: [
-          {
-            id: Math.random(),
-            subOptionItems: [
-              { id: Math.random() },
-              { id: Math.random() },
-              { id: Math.random() },
-            ],
-          },
-          {
-            id: Math.random(),
-            subOptionItems: [
-              { id: Math.random() },
-              { id: Math.random() },
-              { id: Math.random() },
-            ],
-          },
-          {
-            id: Math.random(),
-            subOptionItems: [
-              { id: Math.random() },
-              { id: Math.random() },
-              { id: Math.random() },
-            ],
-          },
+        subOptionItems: [
+          { id: Math.random() },
+          { id: Math.random() },
+          { id: Math.random() },
         ],
       },
     ],
+  };
+}
+
+function getNewProductOption() {
+  return {
+    id: Math.random(),
+    optionItems: [getNewOptionItem(), getNewOptionItem(), getNewOptionItem()],
   };
 }
 
