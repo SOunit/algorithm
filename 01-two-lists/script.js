@@ -55,14 +55,100 @@ function CreateUpdate(product) {
   const copy1 = deepCopy(product);
   const dbProduct1 = getDbProduct(copy1);
   const editedProduct = getEditedProduct(copy1);
-  old(dbProduct1, editedProduct);
+  logic1(dbProduct1, editedProduct);
 
   const copy2 = deepCopy(product);
   const dbProduct2 = getDbProduct(copy2);
-  old(dbProduct2, editedProduct);
+  // logic2(dbProduct2, editedProduct);
 
   const res = check(dbProduct1, dbProduct2);
   console.log({ res });
+}
+
+function logic2(dbProduct, editedProduct) {
+  // map
+  var idToDbProductOptionMap = {};
+  var idToDbOptionItemMap = {};
+  var idToDbSubOptionMap = {};
+  dbProduct.productOptions.forEach((dbProductOption) => {
+    idToDbProductOptionMap[dbProductOption.id] = dbProductOption;
+    dbProductOption.optionItems.forEach((dbOptionItem) => {
+      idToDbOptionItemMap[dbOptionItem.id] = dbOptionItem;
+      dbOptionItem.subOptions.forEach((dbSubOption) => {
+        idToDbSubOptionMap[dbSubOption.id] = dbSubOption;
+      });
+    });
+  });
+
+  // connect
+  var productOptionPairList = [];
+  var optionItemPairList = [];
+  var subOptionPairList = [];
+
+  editedProduct.productOptions.forEach((editedProductOption) => {
+    const pair = {
+      db: idToDbProductOptionMap[editedProductOption.id],
+      edited: editedProductOption,
+    };
+    productOptionPairList.push(pair);
+
+    editedProductOption.optionItems.forEach((editedOptionItem) => {
+      const pair = {
+        db: idToDbOptionItemMap[editedOptionItem.id],
+        edited: editedOptionItem,
+      };
+      optionItemPairList.push(pair);
+
+      editedOptionItem.subOptions.forEach((editedSubOption) => {
+        const pair = {
+          db: idToDbSubOptionMap[editedSubOption.id],
+          edited: editedSubOption,
+        };
+        subOptionPairList.push(pair);
+      });
+    });
+  });
+
+  console.log("logic2", {
+    productOptionPairList,
+    optionItemPairList,
+    subOptionPairList,
+  });
+
+  // update ProductOption
+  productOptionPairList.forEach((productOptionPair) => {
+    const dbProductOption = productOptionPair.db;
+    if (dbProductOption) {
+      dbProductOption.updated = true;
+    } else {
+      dbProduct.productOptions.push(productOptionPair.edited);
+
+      // insert to map
+      // generate key
+    }
+  });
+  // save
+  // insert to map
+
+  // update OptionItem
+  optionItemPairList.forEach((optionItemPair) => {
+    const dbOptionItem = optionItemPair.db;
+    if (dbOptionItem) {
+      dbOptionItem.updated = true;
+    } else {
+      optionItemPair.db.push(optionItemPair.edited);
+    }
+  });
+
+  // update SubOption
+  subOptionPairList.forEach((subOptionPair) => {
+    const dbSubOption = subOptionPair.db;
+    if (dbSubOption) {
+      dbSubOption.updated = true;
+    } else {
+      subOptionPair.db.push(subOptionPair.edited);
+    }
+  });
 }
 
 function check(dbProduct1, dbProduct2) {
@@ -72,19 +158,18 @@ function check(dbProduct1, dbProduct2) {
   return { valid: test1 === test2, test1, test2 };
 }
 
-function old(dbProduct, editedProduct) {
+function logic1(dbProduct, editedProduct) {
   // CreateUpdate productOptions
   editedProduct.productOptions.forEach((editedProductOption) => {
-    const match = getDbProductOption(dbProduct, editedProductOption);
-
-    if (match) {
-      match.updated = true;
+    const dbProductOption = getDbProductOption(dbProduct, editedProductOption);
+    if (dbProductOption) {
+      dbProductOption.updated = true;
     } else {
       dbProduct.productOptions.push(editedProductOption);
     }
   });
 
-  save(dbProduct.productOptions);
+  // save(dbProduct.productOptions);
 
   console.log({ dbProduct });
 
