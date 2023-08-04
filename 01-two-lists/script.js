@@ -1,325 +1,56 @@
 // - 2 list
 // - have to save
 
-const product = {
-  productOptions: [
-    {
-      id: Math.random(),
-      optionItems: [
-        {
-          id: Math.random(),
-          subOptions: [
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-          ],
-        },
-        {
-          id: Math.random(),
-          subOptions: [
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-          ],
-        },
-        ,
-        {
-          id: Math.random(),
-          subOptions: [
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: Math.random(),
-      optionItems: [
-        {
-          id: Math.random(),
-          subOptions: [
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-          ],
-        },
-        {
-          id: Math.random(),
-          subOptions: [
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-          ],
-        },
-        ,
-        {
-          id: Math.random(),
-          subOptions: [
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: Math.random(),
-      optionItems: [
-        {
-          id: Math.random(),
-          subOptions: [
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-          ],
-        },
-        {
-          id: Math.random(),
-          subOptions: [
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-          ],
-        },
-        ,
-        {
-          id: Math.random(),
-          subOptions: [
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-            {
-              id: Math.random(),
-              subOptionItems: [
-                { id: Math.random() },
-                { id: Math.random() },
-                { id: Math.random() },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
-
 function deepCopy(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
 function getDbProduct(product) {
-  var dbProduct = deepCopy(product);
+  const dbProduct = deepCopy(product);
 
   return dbProduct;
 }
 
-function mayDo(fn) {
+function mayDo(action1, action2) {
   // Generate a random number between 0 (inclusive) and 1 (exclusive)
   const random = Math.random();
 
   // Check if the random number is less than 0.5 (50% probability)
   if (random < 0.5) {
     // Action to be performed when the random number is less than 0.5
-    fn();
+    action1();
   } else {
     // Action to be performed when the random number is greater than or equal to 0.5
+    action2();
   }
 }
 
 function getEditedProduct(product) {
   product.productOptions.forEach((productOption) => {
-    mayDo(() => {
-      productOption.edited = true;
-    });
+    mayDo(
+      () => {
+        productOption.edited = true;
+      },
+      () => {
+        product.productOptions.push();
+      }
+    );
 
     productOption.optionItems.forEach((optionItem) => {
-      mayDo(() => {
-        optionItem.edited = true;
-      });
+      mayDo(
+        () => {
+          optionItem.edited = true;
+        },
+        () => {}
+      );
     });
   });
+
+  product.productOptions.push(getNewProductOption());
+  product.productOptions.push(getNewProductOption());
+  product.productOptions.push(getNewProductOption());
+  product.productOptions.push(getNewProductOption());
+  product.productOptions.push(getNewProductOption());
 
   return product;
 }
@@ -329,38 +60,140 @@ function CreateUpdate(product) {
   const editedProduct = getEditedProduct(product);
 
   // edit
-  console.log({ editedProduct });
+  console.log({ product, dbProduct, editedProduct });
 
-  // CreateUpdate
-  dbProduct.productOptions.forEach((dbProductOption) => {
-    console.log({ dbProductOption });
+  // CreateUpdate productOptions
+  editedProduct.productOptions.forEach((editedProductOption) => {
+    const match = dbProduct.productOptions.find(
+      (dbProductOption) => dbProductOption.id === editedProductOption.id
+    );
+
+    if (match) {
+      match.updated = true;
+    } else {
+      dbProduct.productOptions.push(editedProductOption);
+    }
   });
 
-  save(TYPES.PRODUCT_OPTIONS, dbProduct.productOptions);
+  save(dbProduct.productOptions);
+
+  console.log({ dbProduct });
 }
 
-var TYPES = {
-  PRODUCT_OPTIONS: "PRODUCT_OPTIONS",
-  OPTION_ITEMS: "OPTION_ITEMS",
-  SUB_OPTIONS: "SUB_OPTIONS",
-  SUB_OPTION_ITEMS: "SUB_OPTION_ITEMS",
+function save(items) {
+  items.forEach((item) => {
+    item.saved = true;
+  });
+}
+
+function getNewProductOption() {
+  return {
+    id: Math.random(),
+    optionItems: [
+      {
+        id: Math.random(),
+        subOptions: [
+          {
+            id: Math.random(),
+            subOptionItems: [
+              { id: Math.random() },
+              { id: Math.random() },
+              { id: Math.random() },
+            ],
+          },
+          {
+            id: Math.random(),
+            subOptionItems: [
+              { id: Math.random() },
+              { id: Math.random() },
+              { id: Math.random() },
+            ],
+          },
+          {
+            id: Math.random(),
+            subOptionItems: [
+              { id: Math.random() },
+              { id: Math.random() },
+              { id: Math.random() },
+            ],
+          },
+        ],
+      },
+      {
+        id: Math.random(),
+        subOptions: [
+          {
+            id: Math.random(),
+            subOptionItems: [
+              { id: Math.random() },
+              { id: Math.random() },
+              { id: Math.random() },
+            ],
+          },
+          {
+            id: Math.random(),
+            subOptionItems: [
+              { id: Math.random() },
+              { id: Math.random() },
+              { id: Math.random() },
+            ],
+          },
+          {
+            id: Math.random(),
+            subOptionItems: [
+              { id: Math.random() },
+              { id: Math.random() },
+              { id: Math.random() },
+            ],
+          },
+        ],
+      },
+      {
+        id: Math.random(),
+        subOptions: [
+          {
+            id: Math.random(),
+            subOptionItems: [
+              { id: Math.random() },
+              { id: Math.random() },
+              { id: Math.random() },
+            ],
+          },
+          {
+            id: Math.random(),
+            subOptionItems: [
+              { id: Math.random() },
+              { id: Math.random() },
+              { id: Math.random() },
+            ],
+          },
+          {
+            id: Math.random(),
+            subOptionItems: [
+              { id: Math.random() },
+              { id: Math.random() },
+              { id: Math.random() },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// execute
+
+const product = {
+  productOptions: [
+    getNewProductOption(),
+    getNewProductOption(),
+    getNewProductOption(),
+    getNewProductOption(),
+    getNewProductOption(),
+    getNewProductOption(),
+    getNewProductOption(),
+    getNewProductOption(),
+  ],
 };
-
-function save(key, items) {
-  switch (key) {
-    case TYPES.PRODUCT_OPTIONS:
-      var productOptions = items;
-      break;
-    case TYPES.PRODUCT_OPTIONS:
-      break;
-    case TYPES.PRODUCT_OPTIONS:
-      break;
-    case TYPES.PRODUCT_OPTIONS:
-      break;
-
-    default:
-      break;
-  }
-}
 
 CreateUpdate(product);
