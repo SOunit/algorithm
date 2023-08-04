@@ -52,13 +52,24 @@ function getEditedProduct(product) {
 }
 
 function CreateUpdate(product) {
-  const dbProduct = getDbProduct(product);
-  const editedProduct = getEditedProduct(product);
+  const copy1 = deepCopy(product);
+  const dbProduct1 = getDbProduct(copy1);
+  const editedProduct = getEditedProduct(copy1);
+  old(dbProduct1, editedProduct);
 
-  old(dbProduct, editedProduct);
+  const copy2 = deepCopy(product);
+  const dbProduct2 = getDbProduct(copy2);
+  old(dbProduct2, editedProduct);
 
-  // edit
-  console.log({ product, dbProduct, editedProduct });
+  const res = check(dbProduct1, dbProduct2);
+  console.log({ res });
+}
+
+function check(dbProduct1, dbProduct2) {
+  var test1 = JSON.stringify(dbProduct1);
+  var test2 = JSON.stringify(dbProduct2);
+
+  return { valid: test1 === test2, test1, test2 };
 }
 
 function old(dbProduct, editedProduct) {
