@@ -1,0 +1,12 @@
+{
+  "name": "05-add-two-numbers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "answer.js",
+  "scripts": {
+    "test": "node --experimental-modules quiz.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
