@@ -6,7 +6,7 @@
  * }
  */
 
-import { test } from "../../lib/utils.mjs";
+import { convertNumberToReverseLinkedList } from "../../lib/utils.mjs";
 
 /**
  * @param {ListNode} l1
@@ -16,7 +16,8 @@ import { test } from "../../lib/utils.mjs";
 var addTwoNumbers = function (l1, l2) {
   // var res1 = getNumberFromLinkedList(l1);
   // console.log({ res1, res2 });
-  test("This is test!!!");
+
+  convertNumberToReverseLinkedList(100);
 };
 
 // create test data
