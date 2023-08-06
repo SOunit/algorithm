@@ -35,6 +35,23 @@ function convertToNumber(reversedLinkedListNode) {
 }
 
 function convertToReverseLinkedList(number) {
-  var res = number;
+  var numberString = `${number}`;
+
+  var firstChar = numberString[0];
+  var lastNode = createNode(firstChar, null);
+
+  var currentNode = lastNode;
+  for (let index = 1; index < numberString.length; index++) {
+    var val = numberString[index];
+    var newNode = createNode(val, currentNode);
+
+    currentNode = newNode;
+  }
+
+  var res = currentNode;
   return res;
+}
+
+function createNode(val, next) {
+  return { val, next };
 }
