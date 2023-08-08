@@ -6,7 +6,7 @@
  * }
  */
 
-import { ListNode } from "../../lib/utils.mjs";
+import { ListNode, convertNumberToLinkedList } from "../../lib/utils.mjs";
 import { answer } from "./answer.mjs";
 
 /**
@@ -18,15 +18,7 @@ var reverseList = function (head) {
 };
 
 // test data
-var lastNode = new ListNode(5, null);
-var currentNode = lastNode;
-for (let index = 4; 0 < index; index--) {
-  var newNode = new ListNode(index, currentNode);
-  currentNode = newNode;
-}
-
-var testData = JSON.stringify(currentNode);
-console.log({ testData });
+var head = convertNumberToLinkedList(12345);
 
 // execute
-reverseList();
+reverseList(head);
