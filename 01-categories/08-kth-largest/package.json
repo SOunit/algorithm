@@ -1,0 +1,12 @@
+{
+  "name": "08-kth-largest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-modules quiz.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
