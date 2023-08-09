@@ -28,4 +28,6 @@ export function answer(head) {
 
   var res = firstNode;
   console.log({ res });
+
+  return res;
 }
