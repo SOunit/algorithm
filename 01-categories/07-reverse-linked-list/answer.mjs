@@ -2,7 +2,7 @@ import { ListNode } from "../../lib/utils.mjs";
 
 export function answer(head) {
   // empty case
-  if (!head || !head.val) {
+  if (!head || (!head.val && head.val !== 0)) {
     return null;
   }
 

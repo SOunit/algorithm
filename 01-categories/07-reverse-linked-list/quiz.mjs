@@ -18,7 +18,8 @@ var reverseList = function (head) {
 };
 
 // test data
-var head = convertNumberListToLinkedList([1, 2, 3, 4, 5]);
+// var head = convertNumberListToLinkedList([1, 2, 3, 4, 5]);
+var head = convertNumberListToLinkedList([0, 1, 4, -2]);
 
 // execute
 reverseList(head);
