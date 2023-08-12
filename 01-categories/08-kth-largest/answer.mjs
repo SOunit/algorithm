@@ -4,5 +4,12 @@ export function CreateClass(k, nums) {
 }
 
 export function add(val) {
-  console.log({ val });
+  // add number
+  this.nums.push(val);
+
+  // order by desc
+  this.nums.reverse();
+
+  // return nth number
+  return this.nums[this.nth];
 }
